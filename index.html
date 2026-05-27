@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CodeAlpha Image Gallery</title>
+
+  <link rel="stylesheet" href="style.css"/>
+
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body>
+
+<div id="top"></div>
+
+<h1>📸 Image Gallery</h1>
+<hr>
+
+<!-- FILTER BUTTONS -->
+
+<div class="filters" align="center">
+  <button onclick="filterImages('all')">All</button>
+  <button onclick="filterImages('nature')">Nature</button>
+  <button onclick="filterImages('animals')">Animals</button>
+  <button onclick="filterImages('city')">City</button>
+  <button onclick="filterImages('lifestyle')">Lifestyle</button>
+  <button onclick="filterImages('quotes')">Quotes</button>
+  <button onclick="filterImages('aesthetic')">Aesthetic</button>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery">
+
+  <img src="images/img1.jpg" data-category="nature" onclick="openImage(this)">
+  <img src="images/img2.jpg" data-category="nature" onclick="openImage(this)">
+
+  <img src="images/img3.jpg" data-category="lifestyle" onclick="openImage(this)">
+  <img src="images/img4.jpg" data-category="aesthetic" onclick="openImage(this)">
+  <img src="images/img5.jpg" data-category="lifestyle" onclick="openImage(this)">
+  
+  <img src="images/img6.jpg" data-category="animals" onclick="openImage(this)">
+  <img src="images/img7.jpg" data-category="animals" onclick="openImage(this)">
+
+  <img src="images/img8.jpg" data-category="nature" onclick="openImage(this)">
+  <img src="images/img9.jpg" data-category="nature" onclick="openImage(this)">
+  
+  <img src="images/img10.jpg" data-category="lifestyle" onclick="openImage(this)">
+
+  <img src="images/img11.jpg" data-category="nature" onclick="openImage(this)">
+
+  <img src="images/img12.jpg" data-category="quotes" onclick="openImage(this)">
+  
+  <img src="images/img13.jpg" data-category="aesthetic" onclick="openImage(this)">
+
+  <img src="images/img14.jpg" data-category="city" onclick="openImage(this)">
+
+  <img src="images/img15.jpg" data-category="nature" onclick="openImage(this)">
+
+  <img src="images/img16.jpg" data-category="quotes" onclick="openImage(this)">
+
+</div>
+
+<!-- TOP BUTTON -->
+<a href="#top" class="top-btn">⬆ Top</a>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+
+  <span id="closeBtn" onclick="closeImage()">❌</span>
+
+  <img id="lightbox-img">
+
+  <button class="nav prev" onclick="prevImage()">⬅</button>
+  <button class="nav next" onclick="nextImage()">➡</button>
+
+  <button id="likeBtn" onclick="toggleLike()">🤍 Like this image</button>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 CodeAlpha Image Gallery</p>
+  <p>Built by Rishitha Akurathi</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
