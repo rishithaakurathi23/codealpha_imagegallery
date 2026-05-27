@@ -44,20 +44,14 @@ function prevImage() {
 }
 
 /* LIKE BUTTON */
-let likedImages = {};
-
 function toggleLike() {
   let btn = document.getElementById("likeBtn");
-  let img = document.getElementById("lightbox-img");
+  isLiked = !isLiked;
 
-  let src = img.src;
-
-  if (likedImages[src]) {
-    delete likedImages[src];
-    btn.innerHTML = "🤍 Like this image";
-  } else {
-    likedImages[src] = true;
+  if (isLiked) {
     btn.innerHTML = "❤️ This image was Liked";
+  } else {
+    btn.innerHTML = "🤍 Like this image";
   }
 }
 
@@ -83,4 +77,4 @@ document.addEventListener("keydown", function(e) {
   if (e.key === "ArrowRight") nextImage();
   if (e.key === "ArrowLeft") prevImage();
   if (e.key === "Escape") closeImage();
-});
+});    
