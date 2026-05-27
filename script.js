@@ -1,6 +1,5 @@
 let images = document.querySelectorAll(".gallery img");
 
-// 👉 store by image element itself (BEST & SIMPLE)
 let likedImages = new Set();
 
 function updateImages() {
@@ -11,7 +10,7 @@ function updateImages() {
 function openImage(img) {
   updateImages();
 
-  // 👉 store current image reference
+  
   window.currentImg = img;
 
   document.getElementById("lightbox").style.display = "flex";
