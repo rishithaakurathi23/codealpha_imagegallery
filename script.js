@@ -44,14 +44,20 @@ function prevImage() {
 }
 
 /* LIKE BUTTON */
+let likedImages = {};
+
 function toggleLike() {
   let btn = document.getElementById("likeBtn");
-  isLiked = !isLiked;
+  let img = document.getElementById("lightbox-img");
 
-  if (isLiked) {
-    btn.innerHTML = "❤️ This image was Liked";
-  } else {
+  let src = img.src;
+
+  if (likedImages[src]) {
+    delete likedImages[src];
     btn.innerHTML = "🤍 Like this image";
+  } else {
+    likedImages[src] = true;
+    btn.innerHTML = "❤️ This image was Liked";
   }
 }
 
