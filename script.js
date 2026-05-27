@@ -1,8 +1,8 @@
 let images = document.querySelectorAll(".gallery img");
 let currentIndex = 0;
 
-// 👉 each image like state store chestundi
-let likedImages = [];
+// 👉 store by image src (BEST FIX)
+let likedImages = {};
 
 function updateImages() {
   images = document.querySelectorAll(".gallery img");
@@ -17,25 +17,17 @@ function openImage(img) {
 
   currentIndex = Array.from(images).indexOf(img);
 
-  // 👉 current image like status set
-  let btn = document.getElementById("likeBtn");
-
-  if (likedImages[currentIndex]) {
-    btn.innerHTML = "❤️ This image was Liked";
-  } else {
-    btn.innerHTML = "🤍 Like this image";
-  }
-
+  updateLikeButton();
   document.body.style.overflow = "hidden";
 }
 
-/* CLOSE IMAGE */
+/* CLOSE */
 function closeImage() {
   document.getElementById("lightbox").style.display = "none";
   document.body.style.overflow = "auto";
 }
 
-/* NEXT IMAGE */
+/* NEXT */
 function nextImage() {
   if (images.length === 0) return;
 
@@ -43,16 +35,10 @@ function nextImage() {
 
   document.getElementById("lightbox-img").src = images[currentIndex].src;
 
-  let btn = document.getElementById("likeBtn");
-
-  if (likedImages[currentIndex]) {
-    btn.innerHTML = "❤️ This image was Liked";
-  } else {
-    btn.innerHTML = "🤍 Like this image";
-  }
+  updateLikeButton();
 }
 
-/* PREV IMAGE */
+/* PREV */
 function prevImage() {
   if (images.length === 0) return;
 
@@ -60,30 +46,31 @@ function prevImage() {
 
   document.getElementById("lightbox-img").src = images[currentIndex].src;
 
-  let btn = document.getElementById("likeBtn");
-
-  if (likedImages[currentIndex]) {
-    btn.innerHTML = "❤️ This image was Liked";
-  } else {
-    btn.innerHTML = "🤍 Like this image";
-  }
+  updateLikeButton();
 }
 
-/* LIKE BUTTON */
+/* LIKE TOGGLE */
 function toggleLike() {
+  let src = images[currentIndex].src;
+
+  likedImages[src] = !likedImages[src];
+
+  updateLikeButton();
+}
+
+/* UPDATE BUTTON */
+function updateLikeButton() {
   let btn = document.getElementById("likeBtn");
+  let src = images[currentIndex].src;
 
-  // 👉 toggle per image
-  likedImages[currentIndex] = !likedImages[currentIndex];
-
-  if (likedImages[currentIndex]) {
+  if (likedImages[src]) {
     btn.innerHTML = "❤️ This image was Liked";
   } else {
     btn.innerHTML = "🤍 Like this image";
   }
 }
 
-/* FILTER IMAGES */
+/* FILTER */
 function filterImages(category) {
   let allImgs = document.querySelectorAll(".gallery img");
 
@@ -100,8 +87,8 @@ function filterImages(category) {
   updateImages();
 }
 
-/* KEYBOARD SUPPORT */
-document.addEventListener("keydown", function (e) {
+/* KEYBOARD */
+document.addEventListener("keydown", function(e) {
   if (e.key === "ArrowRight") nextImage();
   if (e.key === "ArrowLeft") prevImage();
   if (e.key === "Escape") closeImage();
